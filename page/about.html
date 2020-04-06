@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+  
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a class="title">Oxygen的个人博客|技术博客</a>
+            <ul class="menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="./setMap.html">地图</a></li>
+                <li><a href="./about.html">关于</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="请输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content_left">
+            <div class="description">
+                <div class="about_title">关于我</div>
+                <p>博主：黎思成，性别男，四川98年小老虎。</p>
+                <p>一个初入前端领域的菜鸟。</p>
+                <p>只为了让自己的生活更好而努力。</p>
+                <p>爱唱歌 爱健身。 </p>
+                <p>希望自己早日能够有一身腱子肉</p>
+                <div class="about_title">关于博客</div>
+                <p>创建的目的一是为了记录前端的技术，也就是我的学习路线。</p>
+                <p>当然也可能分享日常。</p>
+                <p>最后祝愿，大家每天都开开心心的。</p>
+            </div>
+            <div class="blog_comments" id="aboutComments">
+                <span class="blog_comments_msg">写下你想对我说的吧：目前{{count}}条留言</span>
+                <transition-group name='list'>
+                <div class="blog_comment" v-for='el in comments' :key='el.id'>
+                    <span><b>{{el.name}}：</b><b>{{el.options}}</b>发表于 {{el.ctime}} <a
+                            @click='reply(el.id,el.name)'>[回复]</a></span>
+                    <div>{{el.content}}</div>
+                </div>
+                </transition-group>
+                <div class="page_tool">
+                    <ul>
+                        <li @click='dealPageChange("first")' :class="{ban_active:(page==1)}">首页</li>
+                        <li @click='dealPageChange("former")' :class="{ban_active:(page==1)}">上一页</li>
+                        <li v-for='bar in barlist' v-bind:class='{now_page:(page==bar.text)}'
+                            @click=delMiddlePageChange(bar.text)>{{bar.text}}</li>
+                        <li @click='dealPageChange("next")' :class="{ban_active:(page==totlepage)}">下一页</li>
+                        <li @click='dealPageChange("last")' :class="{ban_active:(page==totlepage)}">尾页</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="send_comments" id="sendComments">
+                <span>发表评论</span>
+                <div>
+                    <input type="hidden" name="" id="comment_reply" value="-1">
+                    <input type="hidden" name="" id="comment_reply_name" value="0">
+
+                    <input type="text" placeholder="昵称" id="comment_name">
+                    <input type="text" placeholder="邮箱（评论被回复时你能收到通知）" id='comment_email'>
+                </div>
+                <div>
+                    <textarea name="" placeholder="无意义的内容不会回复" id="comment_content" rows="3"></textarea>
+                </div>
+                <div>
+                    <input type="text" placeholder="验证码" id="comment_code">
+                    <span v-html='vcode' @click=changeVcode()></span>
+                </div>
+                <button class="submit_comment btn" @click='submitComment'>提交留言</button>
+                <button class="write_again btn">重写</button>
+            </div>
+        </div>
+        <div class="content_right">
+            <div class="right_moodule" id="RandomTag">
+                <div>随机标签云</div>
+                <a :href="'/?tag='+tag" v-for='tag in tags' :style='{color:randomColor(),fontSize:randomSize()}'>{{tag}}</a>
+            </div>
+            <div class="right_moodule" id="new_hot">
+                <div>最近热门</div>
+                <ul>
+                    <li v-for = 'temp in titleList'> <a :href="temp.link">{{temp.title}}</a></li>
+                </ul>
+            </div>
+            <div class="right_moodule" id='new_comment'>
+                <div>最新评论</div>
+                <ul>
+                    <li v-for='comment in commentList'> 
+                        <div>
+                            <span>{{comment.name}}</span>
+                            <span class="pull_right">{{comment.date}}</span>
+                        </div>
+                        <p>{{comment.comment}}</p>
+                    </li>
+                   </ul>
+            </div>
+            <div class="right_moodule">
+                <div>友情链接</div>
+                <span><a href="http://47.107.236.50:8093/qipa/" target="black">狗东西的网站一</a></span>
+                <span><a href="http://47.107.236.50:8092/lq-sellingCake-web/" target="black">狗东西的网站二</a></span>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>MadeBy@Oxygen</p>
+        <p>weChat:l1260211231</p>
+        <p>qq:1260211231</p>
+    </footer>
+    <script src="./js/base.js"></script>
+    <script src="./js/about.js"></script>
+</body>
+
+</html>

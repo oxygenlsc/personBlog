@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <!-- <div id="Mask">
+        <div class="Mask" v-show={isShow}>
+            <img src="./imgs/loading.gif" alt="">
+        </div>
+    </div> -->
+    
+    <header class="header">
+        <div class="container">
+            <a class="title">Oxygen的个人博客|技术博客</a>
+            <ul class="menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="./setMap.html">地图</a></li>
+                <li><a href="./about.html">关于</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="请输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content_left">
+            <div class="every_day" id="everyDay" :style="{color:color}" >
+                <span >每日一句</span>
+                <p v-html='getContent'>sasdsadsadsad</p>
+            </div>
+            <div class="article_list" id="articleList">
+                <transition-group name='list'>
+                    <div class="article" v-for='(article,index) in articleList' v-bind:key='index' >
+                        <a :href="article.link" class="article_title">{{article.title}}</a>
+                        <p class="article_content">
+                            {{article.content}}
+                        </p>
+                        <div class="article_foot">
+                            发布于{{article.date}} |  浏览({{article.views}}) | Tags：{{article.tags}}
+                        </div>
+                </div>
+            </transition-group >
+               
+                    
+               <div class="page_tool">
+                   <ul>
+                       <li @click = 'dealPageChange("first")' :class="{ban_active:(page==1)}">首页</li>
+                       <li @click = 'dealPageChange("former")':class="{ban_active:(page==1)}">上一页</li>
+                       <li v-for='bar in barlist' v-bind:class='{now_page:(page==bar.text)}' @click = delMiddlePageChange(bar.text)>{{bar.text}}</li>
+                       <li @click = 'dealPageChange("next")' :class="{ban_active:(page==totlepage)}">下一页</li>
+                       <li @click = 'dealPageChange("last")' :class="{ban_active:(page==totlepage)}">尾页</li>
+                   </ul>
+               </div>
+            </div>
+        </div>
+        <div class="content_right">
+            <div class="right_moodule" id="RandomTag">
+                <div>随机标签云</div>
+                <a :href="'/?tag='+tag" v-for='tag in tags' :style='{color:randomColor(),fontSize:randomSize()}'>{{tag}}</a>
+            </div>
+            <div class="right_moodule" id="new_hot">
+                <div>最近热门</div>
+                <ul>
+                    <li v-for = 'temp in titleList'> <a :href="temp.link">{{temp.title}}</a></li>
+                </ul>
+            </div>
+            <div class="right_moodule" id='new_comment'>
+                <div>最新评论</div>
+                <ul>
+                    <li v-for='comment in commentList'> 
+                        <div>
+                            <span>{{comment.name}}</span>
+                            <span class="pull_right">{{comment.date}}</span>
+                        </div>
+                        <p>{{comment.comment}}</p>
+                    </li>
+                   
+                </ul>
+            </div>
+            <div class="right_moodule">
+                <div>友情链接</div>
+                <span><a href="http://47.107.236.50:8093/qipa/" target="black">狗东西的网站一</a></span>
+                <span><a href="http://47.107.236.50:8092/lq-sellingCake-web/" target="black">狗东西的网站二</a></span>
+                
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>MadeBy@Oxygen</p>
+        <p>weChat:l1260211231</p>
+         <p>qq:1260211231</p>
+    </footer>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
+</body>
+</html>

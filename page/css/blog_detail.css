@@ -1,0 +1,106 @@
+.blog{
+    background-color: #fff;
+    width: 96%;
+    border-radius: 5px;
+    padding: 10px 15px;
+    box-sizing: 3px 4px 3px #888888;
+    text-align: left;
+}
+.blog_title{
+    font-size: 24px;
+    font-weight: 600;
+}
+.blog_msg{
+    padding-top: 10px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid gray;
+}
+.blog_content{
+    padding: 30px 0;
+}
+.send_comments{
+    background-color: #f5f5f5;
+    width: 96%;
+    border-radius: 5px;
+    padding: 10px 15px;
+    box-sizing: 3px 4px 3px #888888;
+    text-align: left;
+    margin-top: 50px;
+}
+.send_comments input{
+    width: 300px;
+    height: 34px;
+    border: 1px dashed #ccc;
+    /* outline: none; */
+    padding: 0 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: #d9b789 0px 1px 8px;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.send_comments textarea{
+    width: 97%;
+    padding: 5px;
+    border: 1px dashed #ccc;
+    /* outline: none; */
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: #d9b789 0px 1px 8px;
+}
+.submit_comment{
+   
+}
+.btn:hover{
+    background-color: rgb(217, 240, 174);
+    transition: ease-in-out 0.4s;
+    color: #fff;
+}
+.btn{
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-color: #ccc;
+    background-color: #fff; 
+    outline: none;
+}
+.write_again{
+
+}
+.blog_comments{
+    width: 100%;
+}
+.blog_comments_msg{
+    margin-top: 20px;
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+.blog_comment{
+    width: 95%;
+    background-color: #d9edf7;
+    border: 1px dashed #7ca4c1;
+    padding: 10px 10px 20px 10px;
+    margin-top: 10px;
+    color: #31708f;
+    text-align: left;
+}
+.blog_comment span{
+    display: inline-block;
+    width: 100%;
+    padding-left: 10px;
+}
+.blog_comment div{
+    display: inline-block;
+    width: 100%;
+    padding-left: 10px;
+    margin-top: 10px;
+}
