@@ -21,6 +21,9 @@ app.get('/getNewComments',loader.get('/getNewComments'))
 app.get('/queryHotBlog',loader.get('/queryHotBlog'))
 app.get('/getBlogByTagName',loader.get('/getBlogByTagName'))
 app.get('/queryBlogByTagCount',loader.get('/queryBlogByTagCount'))
+app.post('/updateBlogById',loader.get('/updateBlogById'))
+
+
 
 
 
